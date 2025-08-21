@@ -1,6 +1,4 @@
 Flask
 gunicorn
-python-dotenv
 psycopg2-binary
-
-
+python-dotenv
