@@ -6,40 +6,44 @@ from flask_sqlalchemy import SQLAlchemy
 import random
 
 
+import os
+from flask_sqlalchemy import SQLAlchemy
+import psycopg2
+import psycopg2.extras
+import urllib.parse as up
 
 app = Flask(__name__)
-app.secret_key = 'supersecretkey'  # pour gérer les sessions
+app.secret_key = 'supersecretkey'
 
-# Config PostgreSQL
-DB_HOST = "localhost"
-DB_NAME = "BOAD_Carbone"
-DB_USER = "postgres"
-DB_PASS = "baba"
+# Configuration dynamique pour Render
+db_url = os.environ.get('DATABASE_URL')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}'
+if not db_url:
+    raise Exception("DATABASE_URL n'est pas défini")
+
+# Pour SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# ➕ Modèle pour les statistiques
-class Statistique(db.Model):
-    __tablename__ = 'statistiques'
-    id = db.Column(db.Integer, primary_key=True)
-    nb_projets = db.Column(db.Integer, nullable=False)
-    co2_reduit = db.Column(db.Float, nullable=False)
-    gain_financier = db.Column(db.Float, nullable=False)
+# Pour psycopg2 (fonctions personnalisées)
+up.uses_netloc.append("postgres")
+url = up.urlparse(db_url)
+
+def get_db_connection():
+    return psycopg2.connect(
+        database=url.path[1:],  # supprime le slash initial
+        user=url.username,
+        password=url.password,
+        host=url.hostname,
+        port=url.port
+    )
+
+
 
 # 🔐 Identifiants de connexion admin
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD = "password"
-
-
-# 🔁 Connexion DB psycopg2
-def get_db_connection():
-    return psycopg2.connect(
-        host=DB_HOST, dbname=DB_NAME, user=DB_USER, password=DB_PASS
-    )
-
-
 
 def table_exists(cur, table_name):
     cur.execute("""
@@ -566,3 +570,4 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # Créera la table 'statistiques' si elle n'existe pas
     app.run(debug=True)
+
