@@ -83,14 +83,14 @@ body { margin: 0; padding: 0}
     .section-img, .section-text { flex: 1 1 100%; }
   }
 
-       body::before {
+ body::before {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('{{ url_for("static", filename="logo-boad.webp") }}');
+    background: url("/static/logo-boad.webp") center/cover no-repeat;
     background-repeat: repeat;
     background-size: 80px auto;
     opacity: 0.08; /* très léger fond */
@@ -98,6 +98,112 @@ body { margin: 0; padding: 0}
     z-index: -1;
   }
 
+
+/* Très petits écrans (≤ 480px) */
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    height: auto;
+    text-align: center;
+  }
+
+  .header-left img {
+    height: 60px;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-center h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  nav.header-nav {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  nav.header-nav a {
+    width: 100%;
+    text-align: center;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  main {
+    padding: 0 0.8rem;
+    margin-top: 2rem;
+  }
+
+  section {
+    flex-direction: column !important;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .section-img {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .section-img img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .section-text {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .section-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .section-text p,
+  .section-text ul {
+    font-size: 0.95rem;
+  }
+
+  .section-text ul {
+    padding-left: 1.2rem;
+  }
+
+  .carbon-eval-link a {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+    display: inline-block;
+  }
+
+  .confidentialite-text {
+    font-size: 0.85rem;
+    padding: 0 1rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 0.8rem;
+  }
+
+  body::before {
+    background-size: 60px auto; /* plus petit motif pour petits écrans */
+  }
+}
+
+ 
 </style>
 </head>
 <body>
@@ -206,3 +312,4 @@ body { margin: 0; padding: 0}
 
 </body>
 </html>
+
