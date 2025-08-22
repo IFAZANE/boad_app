@@ -181,6 +181,98 @@ header.main-header {
   }
 }
 
+
+
+
+ /* Très petits écrans (<= 480px) */
+@media (max-width: 480px) {
+  header.main-header {
+    padding: 0.5rem;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-left img {
+    height: 60px;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-center h1 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  nav.header-nav {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    align-items: center;
+  }
+
+  nav.header-nav a {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.8rem;
+    width: 90%;
+    text-align: center;
+  }
+
+  main {
+    padding: 0 0.5rem;
+  }
+
+  .description-outil img.logo-left {
+    width: 100%;
+    max-width: 90%;
+    margin: 1rem auto;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .stat-box {
+    width: 100%;
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
+
+  .carbon-eval-link a {
+    font-size: 0.95rem;
+    padding: 0.8rem 2rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 0.8rem;
+  }
+
+  .confidentialite-text {
+    font-size: 0.85rem;
+    padding: 0 1rem;
+  }
+}
+html, body {
+  overflow-x: hidden;
+}
+img, video, canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 </style>
 
 </head>
@@ -287,4 +379,5 @@ header.main-header {
 
 </body>
 </html>
+
 
