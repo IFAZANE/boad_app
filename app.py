@@ -5,7 +5,7 @@ import json
 from flask_sqlalchemy import SQLAlchemy
 import random
 
-
+from models import Statistique
 import os
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2
@@ -570,4 +570,5 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # Créera la table 'statistiques' si elle n'existe pas
     app.run(debug=True)
+
 
