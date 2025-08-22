@@ -124,6 +124,62 @@ header.main-header {
 
   footer { background: #c9a200; color: white; font-weight: 700; text-align: center; padding: 1rem; font-size: 0.9rem; margin-top: auto; }
 
+@media (max-width: 768px) {
+  header.main-header {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  .header-left img {
+    height: 80px;
+    margin-bottom: 1rem;
+  }
+
+  .header-center h1 {
+    font-size: 1.4rem;
+    text-align: left;
+  }
+
+  nav.header-nav {
+    flex-direction: column;
+    width: 100%;
+    padding-top: 1rem;
+  }
+
+  nav.header-nav a {
+    padding: 0.5rem 0;
+    width: 100%;
+  }
+
+  .description-outil img.logo-left {
+    float: none;
+    display: block;
+    margin: 1rem auto;
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .statistiques-wow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-box {
+    width: 90%;
+  }
+
+  .carbon-eval-link a {
+    width: 100%;
+    display: block;
+    font-size: 1rem;
+  }
+
+  body::before {
+    animation: none;
+  }
+}
 
 </style>
 
@@ -231,3 +287,4 @@ header.main-header {
 
 </body>
 </html>
+
