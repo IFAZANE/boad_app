@@ -186,20 +186,21 @@ input[type="number"]:focus {
 }
 
 
-      body::before {
+    body::before {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('{{ url_for("static", filename="logo-boad.webp") }}');
+    background: url("/static/logo-boad.webp") center/cover no-repeat;
     background-repeat: repeat;
     background-size: 80px auto;
     opacity: 0.08; /* très léger fond */
     pointer-events: none;
     z-index: -1;
   }
+
 
     @media (max-width: 768px) {
   header {
@@ -245,17 +246,46 @@ input[type="number"]:focus {
     padding: 1.5rem;
   }
 
-  button[type="submit"] {
-    width: 100%;
-    font-size: 1rem;
-    padding: 1rem;
-  }
+ 
+      button[type="submit"] {
+  width: 100%;
+  max-width: 300px;
+  margin: 1rem auto 0;
+  display: block;
+}
+
 
   body::before {
     background-size: 60px auto; /* réduire la taille du motif sur petit écran */
   }
 }
 
+@media (max-width: 360px) {
+  h2 {
+    font-size: 1.3rem;
+  }
+  .header-center h1 {
+    font-size: 1.2rem;
+  }
+  nav.header-nav a {
+    font-size: 0.9rem;
+    padding: 0.6rem 0;
+  }
+  form {
+    padding: 1rem;
+  }
+  button[type="submit"] {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+  width: 100%;
+  box-sizing: border-box;
+}
 
   </style>
 </head>
@@ -356,4 +386,5 @@ input[type="number"]:focus {
 
 </body>
 </html>
+
 
